@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="vsteps--wrapper">
-      <div class="vsteps--bar" v-for="(item, key) in 5" :key="key">
-        <div class="bar--top" :class="{ 'active': key < 3 }">
+      <div class="vsteps--bar" v-for="(item, key) in 5" :key="key" @click="stepsChanged(key + 1)">
+        <div class="bar--top" :class="{ 'active': key < actives }">
           <span class="bar--top-step">{{ key + 1 }}</span>
         </div>
         <div class="bar--title">
@@ -15,7 +15,16 @@
 
 <script>
 export default {
-
+  data() {
+    return {
+      actives: 1,
+    }
+  },
+  methods: {
+    stepsChanged(key) {
+      this.actives = key
+    }
+  }
 }
 </script>
 
