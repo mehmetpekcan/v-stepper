@@ -40,8 +40,9 @@ export default {
       this.actives = key
     }
   },
-  created() {
+  mounted() {
     this.steps = this.$children
+    this.steps[0].isActive = true
   }
 }
 </script>
