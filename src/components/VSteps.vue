@@ -5,8 +5,10 @@
         <div class="vsteps--bar" v-for="(item, key) in steps" :key="key" @click="stepsChanged(key)">
           <div class="bar--top" :class="{ 'active': key < actives + 1 }">
             <div class="bar--top-step">
-              <span v-if="key > actives - 1">{{ key + 1 }}</span>
-              <i v-else class="fas fa-check"></i>
+              <span v-if="key > actives - 1 && options.hasIcon">{{ key + 1 }}</span>
+              <i v-else-if="key <= actives - 1 && options.hasIcon" class="fas fa-check"></i>
+              <span v-else-if="key > actives - 1 && !options.hasIcon">{{ key + 1 }}</span>
+              <span v-else-if="key <= actives - 1 && !options.hasIcon">{{ key + 1 }}</span>
             </div>
           </div>
           <div class="bar--title">
@@ -25,10 +27,20 @@
 
 <script>
 export default {
+  name: "VSteps",
   data() {
     return {
       actives: 0,
       steps: []
+    }
+  },
+  props: {
+    options: {
+      required: false,
+      type: Object,
+      default: () => ({
+          hasIcon: false,
+      })
     }
   },
   methods: {
