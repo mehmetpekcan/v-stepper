@@ -1,6 +1,11 @@
 <template>
   <div>
     <div class="vsteps--wrapper">
+      <!-- 
+      |----------------------------------------
+      | Steps Area
+      |----------------------------------------
+      -->
       <div class="vsteps--bar-wrapper">
         <div class="vsteps--bar" v-for="(item, key) in steps" :key="key" @click="stepsChanged(key)">
           <div class="bar--top" :class="{ 'active': key < actives + 1 }">
@@ -16,9 +21,54 @@
           </div>
         </div>
       </div>
+      <!-- 
+      |----------------------------------------
+      | Content Area
+      |----------------------------------------
+      -->
       <div class="vsteps--content-wrapper">
         <div class="vsteps--content">
           <slot />
+        </div>
+      </div>
+      <!-- 
+      |----------------------------------------
+      | Buttons Area
+      |----------------------------------------
+      -->
+      <div class="vsteps--buttons-wrapper" v-if="options.hasButtons">
+        <div class="vsteps--buttons">
+          <button
+            v-if="actives === 0"
+            disabled="true"
+            class="vsteps--buttons-btn"
+            style="color: #bdc3c7; box-shadow: 0 3px 10px -5px #bdc3c7; background-color: #ecf0f1; transition: .2s all ease;"
+            >
+            Back
+          </button>
+          <button
+            v-if="actives !== 0"
+            class="vsteps--buttons-btn"
+            :class="options.btnColor"
+            @click="stepChangeByButton(-1)"
+            >
+            Back
+          </button>
+          <button
+            v-if="actives !== steps.length - 1"
+            class="vsteps--buttons-btn"
+            :class="options.btnColor"
+            @click="stepChangeByButton(1)"
+            >
+            Next
+          </button>
+          <button
+            v-if="actives === steps.length - 1"
+            class="vsteps--buttons-btn"
+            :class="options.btnColor"
+            >
+            Finish
+          </button>
         </div>
       </div>
     </div>
@@ -40,10 +90,28 @@ export default {
       type: Object,
       default: () => ({
           hasIcon: false,
+          btnColor: 'primary',
+          hasButtons: true
       })
     }
   },
   methods: {
+    stepChangeByButton(payload) {
+      if (payload === 1) {
+        if (this.actives !== this.steps.length - 1) {
+          this.actives += 1
+        } else {
+          return
+        }
+      } else {
+        if (this.actives !== 0) {
+          this.actives -= 1
+        } else {
+          return
+        }
+      }
+      this.stepsChanged(this.actives)
+    },
     stepsChanged(key) {
       this.steps.forEach(step => {
         if (step.stepKey === key) {

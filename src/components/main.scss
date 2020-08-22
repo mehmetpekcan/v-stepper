@@ -1,4 +1,4 @@
-html, body {
+html, body, button, input, select, option, * {
   font-size: 14px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
   "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
@@ -8,6 +8,7 @@ html, body {
 .vsteps--wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   /*
   |------------------------------
@@ -108,6 +109,43 @@ html, body {
   |------------------------------
   */
   .vsteps--content-wrapper {
-
+    margin: 2rem 0;
   }
+
+  /*
+  |------------------------------
+  |
+  | Buttons area
+  |
+  |------------------------------
+  */
+  .vsteps--buttons {
+    display: flex;
+  
+    &-btn {
+      margin: 0 .5rem;
+      border: 0;
+      font-size: 1rem;
+      outline: none;
+      cursor: pointer;
+      padding: .5rem 1rem;
+      color: #fff;
+      border-radius: .2rem;
+      text-transform: uppercase;
+      letter-spacing: .02rem;
+      transition: .2s all ease;
+    }
+  }
+}
+
+/*
+|------------------------------
+|
+| Colors
+|
+|------------------------------
+*/
+.primary {
+  background-color: #f39c12;
+  box-shadow: 0 5px 10px -5px #f39c12;
 }
