@@ -12,7 +12,8 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 10rem;
+    margin-left: 12rem;
+    cursor: pointer;
     
     .bar--top {
       width: 2rem;
@@ -23,16 +24,19 @@ html, body {
       border-radius: 50%;
       background-color: #ecf0f1;
       box-shadow: 0 5px 10px -3px #dfe4ea;
+      transition: .3s all ease-in-out;
 
       &.active {
         background-color: #f39c12;
         box-shadow: 0 5px 10px -3px #f39c12;
-        
+        transition: .3s all ease-in-out;
+
         .bar--top-step {
           color: #fff;
 
           &::before {
             background-color: #f39c12;
+            transition: .3s all ease-in-out;
           }
         }
       }
@@ -40,11 +44,13 @@ html, body {
       &-step {
         color: #a4b0be;
         position: relative;
-        
+        transition: .3s all ease-in-out;
+
         &::before {
+          transition: .3s all ease-in-out;
           content: "";
           display: block;
-          width: 8rem;
+          width: 10rem;
           height: 3px;
           background-color: #ecf0f1;
           border-radius: 10rem;
