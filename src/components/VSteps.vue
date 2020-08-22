@@ -4,7 +4,10 @@
       <div class="vsteps--bar-wrapper">
         <div class="vsteps--bar" v-for="(item, key) in steps" :key="key" @click="stepsChanged(key)">
           <div class="bar--top" :class="{ 'active': key < actives + 1 }">
-            <span class="bar--top-step">{{ key + 1 }}</span>
+            <div class="bar--top-step">
+              <span v-if="key > actives - 1">{{ key + 1 }}</span>
+              <i v-else class="fas fa-check"></i>
+            </div>
           </div>
           <div class="bar--title">
             <p>{{ item.title }}</p>
@@ -42,6 +45,12 @@ export default {
   },
   mounted() {
     this.steps = this.$children
+
+    /* 
+    |----------------------------------------
+    | Initially make active the first step
+    |----------------------------------------
+    */
     this.steps[0].isActive = true
   }
 }
@@ -49,4 +58,5 @@ export default {
 
 <style lang="scss">
 @import "./main.scss";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css";
 </style>
