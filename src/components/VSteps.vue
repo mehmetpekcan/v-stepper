@@ -125,9 +125,10 @@ export default {
         }
       })
       this.actives = key
+      this.$emit("change", this.actives)
     },
     stepsFinished() {
-      this.$emit("stepsFinished")
+      this.$emit("finish")
     }
   },
   mounted() {
