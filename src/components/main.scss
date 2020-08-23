@@ -109,7 +109,6 @@ html, body, button, input, select, option, * {
   |------------------------------
   */
   .vsteps--content-wrapper {
-    margin: 2rem 0;
     width: 100%;
   }
 
@@ -122,6 +121,7 @@ html, body, button, input, select, option, * {
   */
   .vsteps--buttons {
     display: flex;
+    margin-top: 1rem;
   
     &-btn {
       margin: 0 .5rem;
