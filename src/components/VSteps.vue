@@ -14,13 +14,13 @@
           >
           <div class="bar--top" :class="{ 'active': key < actives + 1 }">
             <div class="bar--top-step" v-if="!item.icon">
-              <span v-if="key > actives - 1 && options.hasCheckIcon">{{ key + 1 }}</span>
-              <i v-else-if="key <= actives - 1 && options.hasCheckIcon" class="fas fa-check"></i>
-              <span v-else-if="key > actives - 1 && !options.hasCheckIcon">{{ key + 1 }}</span>
-              <span v-else-if="key <= actives - 1 && !options.hasCheckIcon">{{ key + 1 }}</span>
+              <span v-if="key > actives - 1 && hasCheckIcon">{{ key + 1 }}</span>
+              <i v-else-if="key <= actives - 1 && hasCheckIcon" class="fas fa-check"></i>
+              <span v-else-if="key > actives - 1 && !hasCheckIcon">{{ key + 1 }}</span>
+              <span v-else-if="key <= actives - 1 && !hasCheckIcon">{{ key + 1 }}</span>
             </div>
             <div class="bar--top-step" v-else>
-              <i v-if="key <= actives - 1 && options.hasCheckIcon" class="fas fa-check"></i>
+              <i v-if="key <= actives - 1 && hasCheckIcon" class="fas fa-check"></i>
               <i v-else :class="item.icon" />
             </div>
           </div>
@@ -44,7 +44,7 @@
       | Buttons Area
       |----------------------------------------
       -->
-      <div class="vsteps--buttons-wrapper" v-if="options.hasButtons">
+      <div class="vsteps--buttons-wrapper" v-if="hasButtons">
         <div class="vsteps--buttons">
           <button
             v-if="actives === 0"
@@ -57,7 +57,7 @@
           <button
             v-if="actives !== 0"
             class="vsteps--buttons-btn"
-            :class="options.btnColor"
+            :class="btnColor"
             @click="stepChangeByButton(-1)"
             >
             Back
@@ -65,7 +65,7 @@
           <button
             v-if="actives !== steps.length - 1"
             class="vsteps--buttons-btn"
-            :class="options.btnColor"
+            :class="btnColor"
             @click="stepChangeByButton(1)"
             >
             Next
@@ -73,7 +73,7 @@
           <button
             v-if="actives === steps.length - 1"
             class="vsteps--buttons-btn"
-            :class="options.btnColor"
+            :class="btnColor"
             @click="stepsFinished"
             >
             Finish
@@ -94,15 +94,10 @@ export default {
     }
   },
   props: {
-    options: {
-      required: false,
-      type: Object,
-      default: () => ({
-          hasCheckIcon: true,
-          btnColor: 'orange',
-          hasButtons: true,
-      })
-    }
+    hasCheckIcon: { required: false, type: Boolean, default: false },
+    btnColor: { required: false, type: String, default: "orange" },
+    hasButtons: { required: false, type: Boolean, default: true },
+    hasDotStyle: { required: false, type: Boolean, default: false }
   },
   methods: {
     stepChangeByButton(payload) {
