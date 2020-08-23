@@ -25,7 +25,8 @@
             </div>
           </div>
           <div class="bar--title">
-            <p>{{ item.title }}</p>
+            <p style="margin-top: 1rem; font-weight: 500;">{{ item.title }}</p>
+            <p v-if="item.description" style="margin: .5rem 0; font-size: .85rem; opacity: .8;"> {{ item.description }}</p>
           </div>
         </div>
       </div>
