@@ -143,51 +143,110 @@ html, body, button, input, select, option, * {
 /*
 |------------------------------
 |
-| Colors
+| Button Colors
 |
 |------------------------------
 */
-.orange {
-  background-color: #f39c12;
-  box-shadow: 0 5px 10px -5px #f39c12;
+.orange { background-color: #f39c12; box-shadow: 0 5px 10px -5px #f39c12; }
+.green { background-color: #2ecc71; box-shadow: 0 5px 10px -5px #2ecc71; }
+.turqouse { background-color: #1abc9c; box-shadow: 0 5px 10px -5px #1abc9c; }
+.blue { background-color: #3498db; box-shadow: 0 5px 10px -5px #3498db; }
+.purple { background-color: #9b59b6; box-shadow: 0 5px 10px -5px #9b59b6; }
+.midnight { background-color: #34495e; box-shadow: 0 5px 10px -5px #34495e; }
+.yellow { background-color: #f1c40f; box-shadow: 0 5px 10px -5px #f1c40f; }
+.red { background-color: #e74c3c; box-shadow: 0 5px 10px -5px #e74c3c; }
+
+/*
+|------------------------------
+|
+| Active Steps Colors
+|
+|------------------------------
+*/
+.bar--top.active.orange {
+  background-color: #f39c12 !important;
+  box-shadow: 0 5px 10px -5px #f39c12 !important;
+  .bar--top-step {
+    &::before {
+      background-color: #f39c12 !important;
+      box-shadow: 0 5px 10px -5px #f39c12 !important;
+    }
+  }
 }
 
-.green {
-  background-color: #2ecc71;
-  box-shadow: 0 5px 10px -5px #2ecc71;
+.bar--top.active.green {
+  background-color: #2ecc71 !important;
+  box-shadow: 0 5px 10px -5px #2ecc71 !important;
+  .bar--top-step {
+    &::before {
+      background-color: #2ecc71 !important;
+      box-shadow: 0 5px 10px -5px #2ecc71 !important;
+    }
+  }
 }
 
-.turqouse {
-  background-color: #1abc9c;
-  box-shadow: 0 5px 10px -5px #1abc9c;
+.bar--top.active.turqouse {
+  background-color: #1abc9c !important;
+  box-shadow: 0 5px 10px -5px #1abc9c !important;
+  .bar--top-step {
+    &::before {
+      background-color: #1abc9c !important;
+      box-shadow: 0 5px 10px -5px #1abc9c !important;
+    }
+  }
 }
 
-.blue {
-  background-color: #3498db;
-  box-shadow: 0 5px 10px -5px #3498db;
+.bar--top.active.blue {
+  background-color: #3498db !important;
+  box-shadow: 0 5px 10px -5px #3498db !important;
+  .bar--top-step {
+    &::before {
+      background-color: #3498db !important;
+      box-shadow: 0 5px 10px -5px #3498db !important;
+    }
+  }
 }
 
-.purple {
-  background-color: #9b59b6;
-  box-shadow: 0 5px 10px -5px #9b59b6;
+.bar--top.active.purple {
+  background-color: #9b59b6 !important;
+  box-shadow: 0 5px 10px -5px #9b59b6 !important;
+  .bar--top-step {
+    &::before {
+      background-color: #9b59b6 !important;
+      box-shadow: 0 5px 10px -5px #9b59b6 !important;
+    }
+  }
 }
 
-.midnight {
-  background-color: #34495e;
-  box-shadow: 0 5px 10px -5px #34495e;
+.bar--top.active.midnight {
+  background-color: #34495e !important;
+  box-shadow: 0 5px 10px -5px #34495e !important;
+  .bar--top-step {
+    &::before {
+      background-color: #34495e !important;
+      box-shadow: 0 5px 10px -5px #34495e !important;
+    }
+  }
 }
 
-.yellow {
-  background-color: #f1c40f;
-  box-shadow: 0 5px 10px -5px #f1c40f;
+.bar--top.active.yellow {
+  background-color: #f1c40f !important;
+  box-shadow: 0 5px 10px -5px #f1c40f !important;
+  .bar--top-step {
+    &::before {
+      background-color: #f1c40f !important;
+      box-shadow: 0 5px 10px -5px #f1c40f !important;
+    }
+  }
 }
 
-.red {
-  background-color: #e74c3c;
-  box-shadow: 0 5px 10px -5px #e74c3c;
-}
-
-.light {
-  background-color: #ecf0f1;
-  box-shadow: 0 5px 10px -5px #ecf0f1;
+.bar--top.active.red {
+  background-color: #e74c3c !important;
+  box-shadow: 0 5px 10px -5px #e74c3c !important;
+  .bar--top-step {
+    &::before {
+      background-color: #e74c3c !important;
+      box-shadow: 0 5px 10px -5px #e74c3c !important;
+    }
+  }
 }

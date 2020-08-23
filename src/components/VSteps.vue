@@ -12,7 +12,7 @@
           v-for="(item, key) in steps" :key="key"
           @click="stepsChanged(key)"
           >
-          <div class="bar--top" :class="{ 'active': key < actives + 1 }">
+          <div class="bar--top" :class="[{ active: key < actives + 1 }, color]">
             <div class="bar--top-step" v-if="!item.icon">
               <span v-if="key > actives - 1 && hasCheckIcon">{{ key + 1 }}</span>
               <i v-else-if="key <= actives - 1 && hasCheckIcon" class="fas fa-check"></i>
@@ -57,7 +57,7 @@
           <button
             v-if="actives !== 0"
             class="vsteps--buttons-btn"
-            :class="btnColor"
+            :class="color"
             @click="stepChangeByButton(-1)"
             >
             Back
@@ -65,7 +65,7 @@
           <button
             v-if="actives !== steps.length - 1"
             class="vsteps--buttons-btn"
-            :class="btnColor"
+            :class="color"
             @click="stepChangeByButton(1)"
             >
             Next
@@ -73,7 +73,7 @@
           <button
             v-if="actives === steps.length - 1"
             class="vsteps--buttons-btn"
-            :class="btnColor"
+            :class="color"
             @click="stepsFinished"
             >
             Finish
@@ -95,7 +95,7 @@ export default {
   },
   props: {
     hasCheckIcon: { required: false, type: Boolean, default: false },
-    btnColor: { required: false, type: String, default: "orange" },
+    color: { required: false, type: String, default: "blue" },
     hasButtons: { required: false, type: Boolean, default: true },
     hasDotStyle: { required: false, type: Boolean, default: false }
   },
