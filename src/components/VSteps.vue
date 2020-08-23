@@ -32,7 +32,7 @@
       -->
       <div class="vsteps--content-wrapper">
         <div class="vsteps--content">
-          <slot />
+            <slot />
         </div>
       </div>
       <!-- 
@@ -70,6 +70,7 @@
             v-if="actives === steps.length - 1"
             class="vsteps--buttons-btn"
             :class="options.btnColor"
+            @click="stepsFinished"
             >
             Finish
           </button>
@@ -102,7 +103,7 @@ export default {
   methods: {
     stepChangeByButton(payload) {
       if (payload === 1) {
-        if (this.actives !== this.steps.length - 1) {
+        if (this.actives !== (this.steps.length - 1)) {
           this.actives += 1
         } else {
           return
@@ -125,6 +126,9 @@ export default {
         }
       })
       this.actives = key
+    },
+    stepsFinished() {
+      this.$emit("stepsFinished")
     }
   },
   mounted() {
