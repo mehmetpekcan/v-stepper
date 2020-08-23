@@ -49,12 +49,13 @@ html, body, button, input, select, option, * {
           background-color: #f39c12;
           box-shadow: 0 5px 10px -3px #f39c12;
           transition: .2s all ease;
-  
+          
           .bar--top-step {
             color: #fff;
-  
+            
             &::before {
               background-color: #f39c12;
+              box-shadow: 0 5px 10px -3px #f39c12;
               transition: .2s all ease;
             }
           }
@@ -146,7 +147,47 @@ html, body, button, input, select, option, * {
 |
 |------------------------------
 */
-.primary {
+.orange {
   background-color: #f39c12;
   box-shadow: 0 5px 10px -5px #f39c12;
+}
+
+.green {
+  background-color: #2ecc71;
+  box-shadow: 0 5px 10px -5px #2ecc71;
+}
+
+.turqouse {
+  background-color: #1abc9c;
+  box-shadow: 0 5px 10px -5px #1abc9c;
+}
+
+.blue {
+  background-color: #3498db;
+  box-shadow: 0 5px 10px -5px #3498db;
+}
+
+.purple {
+  background-color: #9b59b6;
+  box-shadow: 0 5px 10px -5px #9b59b6;
+}
+
+.midnight {
+  background-color: #34495e;
+  box-shadow: 0 5px 10px -5px #34495e;
+}
+
+.yellow {
+  background-color: #f1c40f;
+  box-shadow: 0 5px 10px -5px #f1c40f;
+}
+
+.red {
+  background-color: #e74c3c;
+  box-shadow: 0 5px 10px -5px #e74c3c;
+}
+
+.light {
+  background-color: #ecf0f1;
+  box-shadow: 0 5px 10px -5px #ecf0f1;
 }
