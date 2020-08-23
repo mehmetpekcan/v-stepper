@@ -7,7 +7,11 @@
       |----------------------------------------
       -->
       <div class="vsteps--bar-wrapper">
-        <div class="vsteps--bar" v-for="(item, key) in steps" :key="key" @click="stepsChanged(key)">
+        <div
+          class="vsteps--bar"
+          v-for="(item, key) in steps" :key="key"
+          @click="stepsChanged(key)"
+          >
           <div class="bar--top" :class="{ 'active': key < actives + 1 }">
             <div class="bar--top-step" v-if="!item.icon">
               <span v-if="key > actives - 1 && options.hasCheckIcon">{{ key + 1 }}</span>
@@ -95,7 +99,7 @@ export default {
       type: Object,
       default: () => ({
           hasCheckIcon: true,
-          btnColor: 'primary',
+          btnColor: 'orange',
           hasButtons: true,
       })
     }
