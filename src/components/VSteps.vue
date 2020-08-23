@@ -9,11 +9,15 @@
       <div class="vsteps--bar-wrapper">
         <div class="vsteps--bar" v-for="(item, key) in steps" :key="key" @click="stepsChanged(key)">
           <div class="bar--top" :class="{ 'active': key < actives + 1 }">
-            <div class="bar--top-step">
-              <span v-if="key > actives - 1 && options.hasIcon">{{ key + 1 }}</span>
-              <i v-else-if="key <= actives - 1 && options.hasIcon" class="fas fa-check"></i>
-              <span v-else-if="key > actives - 1 && !options.hasIcon">{{ key + 1 }}</span>
-              <span v-else-if="key <= actives - 1 && !options.hasIcon">{{ key + 1 }}</span>
+            <div class="bar--top-step" v-if="!item.icon">
+              <span v-if="key > actives - 1 && options.hasCheckIcon">{{ key + 1 }}</span>
+              <i v-else-if="key <= actives - 1 && options.hasCheckIcon" class="fas fa-check"></i>
+              <span v-else-if="key > actives - 1 && !options.hasCheckIcon">{{ key + 1 }}</span>
+              <span v-else-if="key <= actives - 1 && !options.hasCheckIcon">{{ key + 1 }}</span>
+            </div>
+            <div class="bar--top-step" v-else>
+              <i v-if="key <= actives - 1 && options.hasCheckIcon" class="fas fa-check"></i>
+              <i v-else :class="item.icon" />
             </div>
           </div>
           <div class="bar--title">
@@ -89,9 +93,9 @@ export default {
       required: false,
       type: Object,
       default: () => ({
-          hasIcon: false,
+          hasCheckIcon: true,
           btnColor: 'primary',
-          hasButtons: true
+          hasButtons: true,
       })
     }
   },
