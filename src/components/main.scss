@@ -49,6 +49,17 @@ html, body, button, input, select, option, * {
         box-shadow: 0 5px 10px -3px #dfe4ea;
         transition: .2s all ease;
         
+        &.dot-style {
+          transform: scale(.3);
+
+          .bar--top-step {
+            &::before {
+              width: 60rem !important;
+              right: 220% !important;
+            }
+          }
+        }
+
         &.active {
           background-color: #f39c12;
           box-shadow: 0 5px 10px -3px #f39c12;
@@ -75,7 +86,7 @@ html, body, button, input, select, option, * {
           color: #a4b0be;
           position: relative;
           transition: .2s all ease;
-  
+            
           &::before {
             transition: .2s all ease;
             content: "";
