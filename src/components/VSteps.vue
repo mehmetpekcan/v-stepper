@@ -124,7 +124,7 @@ export default {
     }
   },
   props: {
-    hasCheckIcon: { required: false, type: Boolean, default: true },
+    hasCheckIcon: { required: false, type: Boolean, default: false },
     color: { required: false, type: String, default: "red" },
     buttons: { required: false, type: Boolean, default: true },
     dotStyle: { required: false, type: Boolean, default: false },
