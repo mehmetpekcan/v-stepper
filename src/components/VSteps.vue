@@ -6,7 +6,7 @@
       | Steps Area
       |----------------------------------------
       -->
-      <div class="vsteps--bar-wrapper">
+      <div class="vsteps--bar-wrapper" v-if="!titleUp">
         <div
           class="vsteps--bar"
           v-for="(item, key) in steps" :key="key"
@@ -30,6 +30,33 @@
             <p style="margin-top: 1rem; font-weight: 500;">{{ item.title }}</p>
             <p v-if="item.description" style="margin: .5rem 0; font-size: .85rem; opacity: .8;"> {{ item.description }}</p>
           </div>
+        </div>
+      </div>
+      <div class="vsteps--bar-wrapper" v-else>
+        <div
+          class="vsteps--bar"
+          v-for="(item, key) in steps" :key="key"
+          @click="stepsChanged(key)"
+          >
+          <div class="bar--title">
+            <p style="margin-top: 1rem; font-weight: 500;">{{ item.title }}</p>
+            <p v-if="item.description" style="margin: .5rem 0; font-size: .85rem; opacity: .8;"> {{ item.description }}</p>
+          </div>
+          <div class="bar--top" :class="[{ active: key < actives + 1, 'dot-style': dotStyle }, color]">
+            <div class="bar--top-step" v-if="!item.icon">
+              <span v-if="dotStyle"></span>
+              <span v-else-if="key > actives - 1 && hasCheckIcon">{{ key + 1 }}</span>
+              <i v-else-if="key <= actives - 1 && hasCheckIcon" class="fas fa-check"></i>
+              <span v-else-if="key > actives - 1 && !hasCheckIcon">{{ key + 1 }}</span>
+              <span v-else-if="key <= actives - 1 && !hasCheckIcon">{{ key + 1 }}</span>
+            </div>
+            <div class="bar--top-step" v-else>
+              <span v-if="dotStyle"></span>
+              <i v-else-if="key <= actives - 1 && hasCheckIcon" class="fas fa-check"></i>
+              <i v-else :class="item.icon" />
+            </div>
+          </div>
+
         </div>
       </div>
       <!-- 
@@ -100,7 +127,8 @@ export default {
     hasCheckIcon: { required: false, type: Boolean, default: true },
     color: { required: false, type: String, default: "red" },
     buttons: { required: false, type: Boolean, default: true },
-    dotStyle: { required: false, type: Boolean, default: true }
+    dotStyle: { required: false, type: Boolean, default: false },
+    titleUp: { required: false, type: Boolean, default: false}
   },
   methods: {
     stepChangeByButton(payload) {
