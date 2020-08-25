@@ -1,16 +1,9 @@
 <template>
-  <div v-if="$parent.slide">
-    <transition name="slide" class="slider">
-      <div class="slot" v-if="isActive">
-        <slot />
-      </div>
-    </transition>
-  </div>
-  <div v-else>
-    <div v-if="isActive">
+  <transition :name="$parent.animation" :class="{ 'slider': $parent.animation === 'slide' }">
+    <div :class="{ 'slot': $parent.animation === 'slide' }" v-if="isActive">
       <slot />
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -45,6 +38,7 @@ export default {
   }
 }
 
+/* Slide Animaton */
 .slide-leave-active,
 .slide-leave-to {
     display: none;
@@ -55,5 +49,17 @@ export default {
 }
 .slide-enter {
   transform: translate(100%, 0);
+}
+
+/* Fade Animation */
+.fade-leave-active,
+.fade-leave-to {
+  display: none;
+}
+.fade-enter-active {
+  transition: opacity .7s;
+}
+.fade-enter {
+  opacity: 0;
 }
 </style>
