@@ -1,9 +1,16 @@
 <template>
-  <transition name="slide" class="slider">
-    <div class="slot" v-if="isActive">
+  <div v-if="$parent.slide">
+    <transition name="slide" class="slider">
+      <div class="slot" v-if="isActive">
+        <slot />
+      </div>
+    </transition>
+  </div>
+  <div v-else>
+    <div v-if="isActive">
       <slot />
     </div>
-  </transition>
+  </div>
 </template>
 
 <script>
@@ -16,26 +23,26 @@ export default {
   },
   data() {
     return {
-      isActive: false
+      isActive: false,
     }
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .slider{
   overflow: hidden;
   position: relative;
   height: 200px;
   width: 400px;
-}
-
-.slider .slot {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right:0;
+  
+  .slot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right:0;
+  }
 }
 
 .slide-leave-active,
