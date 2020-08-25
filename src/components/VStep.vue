@@ -1,6 +1,6 @@
 <template>
-  <transition :name="$parent.animation" :class="{ 'slider': $parent.animation === 'slide' }">
-    <div :class="{ 'slot': $parent.animation === 'slide' }" v-if="isActive">
+  <transition :name="animationName" :class="{ 'slider': animationName === 'slide' }">
+    <div :class="{ 'slot': animationName === 'slide' }" v-if="isActive">
       <slot />
     </div>
   </transition>
@@ -17,6 +17,15 @@ export default {
   data() {
     return {
       isActive: false,
+    }
+  },
+  computed: {
+    animationName() {
+      if (!this.$parent.animation) {
+        return ''
+      } else {
+        return this.$parent.animation === 'fade' ? 'fade' : 'slide'
+      }
     }
   }
 }

@@ -129,7 +129,7 @@ export default {
     buttons: { required: false, type: Boolean, default: true },
     dotStyle: { required: false, type: Boolean, default: false },
     titleUp: { required: false, type: Boolean, default: false},
-    animation: { required: false, type: String, default: 'fade' }
+    animation: { required: false, type: String, default: "fade" }
   },
   methods: {
     stepChangeByButton(payload) {
