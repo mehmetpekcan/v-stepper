@@ -66,7 +66,7 @@
       -->
       <div class="vsteps--content-wrapper">
         <div class="vsteps--content">
-            <slot />
+          <slot />
         </div>
       </div>
       <!-- 
