@@ -8,7 +8,7 @@
       -->
       <div class="vsteps--bar-wrapper" v-if="!titleUp">
         <div
-          class="vsteps--bar"
+          class="vsteps--bar" :style="{ width: (100 / steps.length) + '%' }"
           v-for="(item, key) in steps" :key="key"
           @click="stepsChanged(key)"
           >
@@ -120,7 +120,7 @@ export default {
   data() {
     return {
       actives: 0,
-      steps: []
+      steps: [],
     }
   },
   props: {
