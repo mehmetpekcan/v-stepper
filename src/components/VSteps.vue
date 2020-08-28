@@ -14,16 +14,8 @@
           >
           <div class="bar--top" :class="[{ active: key < actives + 1, 'dot-style': dotStyle }, color]">
             <div class="bar--top-step" v-if="!item.icon">
-              <span v-if="dotStyle"></span>
-              <span v-else-if="key > actives - 1 && hasCheckIcon">{{ key + 1 }}</span>
-              <i v-else-if="key <= actives - 1 && hasCheckIcon" class="fas fa-check"></i>
-              <span v-else-if="key > actives - 1 && !hasCheckIcon">{{ key + 1 }}</span>
-              <span v-else-if="key <= actives - 1 && !hasCheckIcon">{{ key + 1 }}</span>
-            </div>
-            <div class="bar--top-step" v-else>
-              <span v-if="dotStyle"></span>
-              <i v-else-if="key <= actives - 1 && hasCheckIcon" class="fas fa-check"></i>
-              <i v-else :class="item.icon" />
+              <span>{{ key + 1 }}</span>
+              <span class="line" />
             </div>
           </div>
           <div class="bar--title">
