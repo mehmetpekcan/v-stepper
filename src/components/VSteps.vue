@@ -13,7 +13,12 @@
           @click="stepsChanged(key)"
           >
           <div class="bar--top" :class="[{ active: key < actives + 1, 'dot-style': dotStyle }, color]">
-            <div class="bar--top-step" v-if="!item.icon">
+            <div class="bar--top-step" v-if="hasCheckIcon">
+              <i class="fas fa-check" v-if="key < actives"></i>
+              <span v-else>{{ key + 1 }}</span>
+              <span class="line" />
+            </div>
+            <div class="bar--top-step" v-else-if="!hasCheckIcon">
               <span>{{ key + 1 }}</span>
               <span class="line" />
             </div>
