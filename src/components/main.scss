@@ -51,24 +51,26 @@ html, body, button, input, select, option, * {
         background-color: #ecf0f1;
         box-shadow: 0 5px 10px -3px #dfe4ea;
         transition: .2s all ease;
-        
-        &.dot-style {
-          transform: scale(.3);
-
-          .bar--top-step {
-          }
-        }
 
         &.active {
-          background-color: #f39c12;
-          box-shadow: 0 5px 10px -3px #f39c12;
           transition: .2s all ease;
           
           .bar--top-step {
             color: #fff;
           }
         }
-  
+        
+        &.dot-style {
+          width: .7rem;
+          height: .7rem;
+          .bar--top-step {
+            .line {
+              height: 2px;
+              width: 8rem;
+            }
+          }
+        }
+
         &-step {
           display: flex;
           align-items: center;

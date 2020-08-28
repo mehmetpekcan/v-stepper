@@ -18,8 +18,11 @@
               <span v-else>{{ key + 1 }}</span>
               <span class="line" />
             </div>
-            <div class="bar--top-step" v-else-if="!hasCheckIcon">
+            <div class="bar--top-step" v-else-if="!hasCheckIcon && !dotStyle">
               <span>{{ key + 1 }}</span>
+              <span class="line" />
+            </div>
+            <div class="bar--top-step" v-else-if="dotStyle">
               <span class="line" />
             </div>
           </div>
