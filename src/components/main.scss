@@ -19,6 +19,13 @@ $red: #e74c3c;
 $white: #fefefe;
 $gray: #f1f2f6;
 
+/*
+|------------------------------
+|
+| Stepper Area
+|
+|------------------------------
+*/
 .vsteps--bar-wrapper {
   display: flex;
 
@@ -29,6 +36,7 @@ $gray: #f1f2f6;
       width: 100%;
       display: flex;
       flex-direction: column;
+      text-align: center;
       align-items: center;
       
       .bar--top {
@@ -44,13 +52,16 @@ $gray: #f1f2f6;
           justify-content: center;
           line-height: 2rem;
           width: 2rem;
+          color: $midnight;
           height: 2rem;
-          background-color: $red;
+          background-color: $gray;
           border-radius: 50%;
+          transition: all .3s ease-in-out;
         }
     
         &::after {
           content: "";
+          transition: width 1s ease-in;
           position: absolute;
           height: 5px;
           width: 100%;
@@ -59,6 +70,60 @@ $gray: #f1f2f6;
           z-index: -1;
           background-color: $gray;
           transform: translateY(-50%);
+        }
+
+        &.dot-style {
+          &::after {
+            height: 2px;
+          }
+
+          .circle {
+            height: .7rem;
+            width: .7rem;
+          }
+        }
+      }
+
+      &.completed {
+        .bar--top {
+          .circle {
+            background-color: $red;
+            color: $white;
+          }
+
+          &:after {
+            background: $red;
+            animation: nextStep .8s;
+            animation-fill-mode: forwards;
+          }
+        }
+      }
+
+      &.active {
+        .bar--top {
+          .circle {
+            background-color: $red;
+            transition: all .3s ease-in-out;
+            animation: pulse 2s infinite;
+            animation-delay: .8s;
+            color: $white;
+          }
+        }
+      }
+
+      .bar--title {
+        color: $midnight;
+
+        &-description {
+          margin: .5rem 0;
+          font-size: .85rem;
+          opacity: .8;
+        }
+
+        &-h1 {
+          margin-top: 1rem;
+          font-weight: 500;
+          font-size: 1.1rem;
         }
       }
     }
@@ -69,21 +134,50 @@ $gray: #f1f2f6;
   }
 }
 
+/*
+|------------------------------
+|
+| Content Area
+|
+|------------------------------
+*/
 .vsteps--content-wrapper {
   display: flex;
   justify-content: center;
   margin: 2rem 0;
 }
 
+/*
+|------------------------------
+|
+| Buttons Area
+|
+|------------------------------
+*/
 .vsteps--buttons-wrapper {
   display: flex;
   justify-content: center;
+
+  .vsteps--buttons {
+    display: flex;
+
+    button {
+      appearance: none;
+      border: none;
+      padding: .5rem 1.5rem;
+      outline: none;
+      border-radius: .3rem;
+      cursor: pointer;
+      color: $white;
+      margin: 0 .3rem;
+    }
+  }
 }
 
 /*
 |------------------------------
 |
-| Button Colors
+| Preset Colors
 |
 |------------------------------
 */
@@ -96,8 +190,20 @@ $gray: #f1f2f6;
 .yellow { background-color: $yellow; box-shadow: 0 5px 10px -5px $yellow; }
 .red { background-color: $red; box-shadow: 0 5px 10px -5px $red; }
 
+/*
+|------------------------------
+|
+| Animations
+|
+|------------------------------
+*/
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(33,131,221, 0.4); }
+  0% { box-shadow: 0 0 0 0 rgba($red, .5); }
   70% { box-shadow: 0 0 0 10px rgba(33,131,221, 0); }
   100% { box-shadow: 0 0 0 0 rgba(33,131,221, 0); }
+}
+
+@keyframes nextStep {
+  0% { width: 0%; }
+  100% { width: 100%; }
 }

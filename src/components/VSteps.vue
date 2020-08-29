@@ -11,13 +11,20 @@
         v-for="(item, key) in steps" :key="key"
         @click="stepsChanged(key)"
         >
-        <div class="vsteps--bar-progress">
-          <div class="bar--top">
+        <div class="vsteps--bar-progress" :class="{ completed: key < actives, active: key === actives }">
+          <div class="bar--top dot-style" v-if="dotStyle">
+            <span class="circle"></span>
+          </div>
+          <div class="bar--top" v-else-if="!hasCheckIcon">
             <span class="circle">{{ key + 1 }}</span>
           </div>
+          <div class="bar--top" v-else-if="hasCheckIcon">
+            <i v-if="key < actives" class="circle fas fa-check" />
+            <span v-else class="circle">{{ key + 1 }}</span>
+          </div>
           <div class="bar--title">
-            <p style="margin-top: 1rem; font-weight: 500;">{{ item.title }}</p>
-            <p v-if="item.description" style="margin: .5rem 0; font-size: .85rem; opacity: .8;"> {{ item.description }}</p>
+            <p class="bar--title-h1">{{ item.title }}</p>
+            <p v-if="item.description" class="bar--title-description"> {{ item.description }}</p>
           </div>
         </div>
       </div>
