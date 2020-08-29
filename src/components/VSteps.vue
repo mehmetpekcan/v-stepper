@@ -97,7 +97,6 @@ export default {
     color: { required: false, type: String, default: "red" },
     buttons: { required: false, type: Boolean, default: true },
     dotStyle: { required: false, type: Boolean, default: false },
-    titleUp: { required: false, type: Boolean, default: false},
     animation: { required: false, type: String, default: "fade" }
   },
   computed: {

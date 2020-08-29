@@ -27,7 +27,9 @@ $gray: #f1f2f6;
 |------------------------------
 */
 .vsteps--bar-wrapper {
+  position: relative;
   display: flex;
+  width: 100%;
 
   .vsteps--bar {
     width: 100%;
@@ -64,10 +66,23 @@ $gray: #f1f2f6;
           transition: width 1s ease-in;
           position: absolute;
           height: 5px;
-          width: 100%;
+          width: 0%;
           top: 50%;
           left: 50%;
           z-index: -1;
+          background-color: $gray;
+          transform: translateY(-50%);
+        }
+
+        &::before {
+          content: "";
+          transition: width 1s ease-in;
+          position: absolute;
+          height: 5px;
+          width: 100%;
+          top: 50%;
+          right: 50%;
+          z-index: -11;
           background-color: $gray;
           transform: translateY(-50%);
         }
@@ -91,9 +106,15 @@ $gray: #f1f2f6;
             color: $white;
           }
 
-          &:after {
+          &::after {
             background: $red;
             animation: nextStep .8s;
+            animation-fill-mode: forwards;
+          }
+
+          &::before {
+            background: $red;
+            animation: backS .8s;
             animation-fill-mode: forwards;
           }
         }
@@ -131,6 +152,10 @@ $gray: #f1f2f6;
     &:last-of-type .vsteps--bar-progress .bar--top::after {
       display: none;
     }
+    
+    &:first-of-type .vsteps--bar-progress .bar--top::before {
+      display: none;
+    }
   }
 }
 
@@ -142,9 +167,9 @@ $gray: #f1f2f6;
 |------------------------------
 */
 .vsteps--content-wrapper {
-  display: flex;
-  justify-content: center;
   margin: 2rem 0;
+  padding: 0 2rem;
+  width: 100%;
 }
 
 /*
