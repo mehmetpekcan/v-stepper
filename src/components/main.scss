@@ -89,6 +89,9 @@ $gray: #f1f2f6;
         }
 
         &.dot-style {
+          &::before {
+            height: 2px;
+          }
           &::after {
             height: 2px;
           }

@@ -16,7 +16,7 @@
           :class="{ completed: key < actives, active: key === actives }"
           >
           <div class="bar--top dot-style" v-if="dotStyle">
-            <span class="circle"></span>
+            <span class="circle" :class="['color']"></span>
           </div>
           <div class="bar--top" v-else-if="!hasCheckIcon">
             <span class="circle">{{ key + 1 }}</span>
