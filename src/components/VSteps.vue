@@ -11,7 +11,10 @@
         v-for="(item, key) in steps" :key="key"
         @click="stepsChanged(key)"
         >
-        <div class="vsteps--bar-progress" :class="{ completed: key < actives, active: key === actives }">
+        <div
+          class="vsteps--bar-progress"
+          :class="{ completed: key < actives, active: key === actives }"
+          >
           <div class="bar--top dot-style" v-if="dotStyle">
             <span class="circle"></span>
           </div>
