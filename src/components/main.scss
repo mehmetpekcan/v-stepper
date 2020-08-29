@@ -8,158 +8,76 @@ html, body, button, input, select, option, * {
   box-sizing: border-box;
 }
 
-.vsteps--wrapper {
+$orange: #f39c12;
+$green: #2ecc71;
+$turqouse: #1abc9c;
+$blue: #3498db;
+$purple: #9b59b6;
+$midnight: #34495e;
+$yellow: #f1c40f;
+$red: #e74c3c;
+$white: #fefefe;
+$gray: #f1f2f6;
+
+.vsteps--bar-wrapper {
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  z-index: 9999 !important;
 
-  /*
-  |------------------------------
-  |
-  | Top area to keep steps
-  |
-  |------------------------------
-  */
-  .vsteps--bar-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;;
+  .vsteps--bar {
     width: 100%;
-    min-width: 100%;
 
-    .vsteps--bar {
+    .vsteps--bar-progress {
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      cursor: pointer;
       
-      /*
-      |------------------------------
-      |
-      | Every individual step item
-      |
-      |------------------------------
-      */
       .bar--top {
-        width: 2rem;
-        height: 2rem;
+        position: relative;
         display: flex;
-        align-items: center;
         justify-content: center;
-        border-radius: 50%;
-        background-color: #ecf0f1;
-        box-shadow: 0 5px 10px -3px #dfe4ea;
-        transition: .2s all ease;
-
-        &.active {
-          transition: .2s all ease;
-          
-          .bar--top-step {
-            color: #fff;
-          }
-        }
+        width: 100%;
+        color: $white;
         
-        &.dot-style {
-          width: .7rem;
-          height: .7rem;
-          .bar--top-step {
-            .line {
-              height: 2px;
-              width: 8rem;
-            }
-          }
-        }
-
-        &-step {
+        .circle {
           display: flex;
           align-items: center;
-          line-height: 2rem;
-          width: 5rem;
           justify-content: center;
-          color: #a4b0be;
-          position: relative;
-          transition: .2s all ease;
-
-          .line {
-            background-color: #ecf0f1;
-            position: absolute;
-            width: 6.5rem;
-            height: 1.5px;
-            z-index: -999;
-            top: 50%;
-            transform: translateY(-50%);
-            right: 100%;
-          }
+          line-height: 2rem;
+          width: 2rem;
+          height: 2rem;
+          background-color: $red;
+          border-radius: 50%;
+        }
+    
+        &::after {
+          content: "";
+          position: absolute;
+          height: 5px;
+          width: 100%;
+          top: 50%;
+          left: 50%;
+          z-index: -1;
+          background-color: $gray;
+          transform: translateY(-50%);
         }
       }
+    }
 
-      &:first-of-type {
-        .bar--top {
-          .bar--top-step {
-            .line {
-              display: none;
-            }
-          }
-        }
-      }
-  
-      .bar--title {
-        color: #34495e;
-        font-size: 1rem;
-        text-align: center;
-      }
-  
-      &:first-of-type {
-        margin-left: 0;
-  
-        .bar--top-step::before {
-          content: none;
-        } 
-      }
+    &:last-of-type .vsteps--bar-progress .bar--top::after {
+      display: none;
     }
   }
+}
 
-  /*
-  |------------------------------
-  |
-  | Content area for every
-  | individual steps
-  |
-  |------------------------------
-  */
-  .vsteps--content-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
+.vsteps--content-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
 
-  /*
-  |------------------------------
-  |
-  | Buttons area
-  |
-  |------------------------------
-  */
-  .vsteps--buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-  
-    &-btn {
-      margin: 0 .5rem;
-      border: 0;
-      font-size: 1rem;
-      outline: none;
-      cursor: pointer;
-      padding: .5rem 1rem;
-      color: #fff;
-      border-radius: .2rem;
-      text-transform: uppercase;
-      letter-spacing: .02rem;
-      transition: .2s all ease;
-    }
-  }
+.vsteps--buttons-wrapper {
+  display: flex;
+  justify-content: center;
 }
 
 /*
@@ -169,106 +87,17 @@ html, body, button, input, select, option, * {
 |
 |------------------------------
 */
-.orange { background-color: #f39c12; box-shadow: 0 5px 10px -5px #f39c12; }
-.green { background-color: #2ecc71; box-shadow: 0 5px 10px -5px #2ecc71; }
-.turqouse { background-color: #1abc9c; box-shadow: 0 5px 10px -5px #1abc9c; }
-.blue { background-color: #3498db; box-shadow: 0 5px 10px -5px #3498db; }
-.purple { background-color: #9b59b6; box-shadow: 0 5px 10px -5px #9b59b6; }
-.midnight { background-color: #34495e; box-shadow: 0 5px 10px -5px #34495e; }
-.yellow { background-color: #f1c40f; box-shadow: 0 5px 10px -5px #f1c40f; }
-.red { background-color: #e74c3c; box-shadow: 0 5px 10px -5px #e74c3c; }
+.orange { background-color: $orange; box-shadow: 0 5px 10px -5px $orange; }
+.green { background-color: $green; box-shadow: 0 5px 10px -5px $green; }
+.turqouse { background-color: $turqouse; box-shadow: 0 5px 10px -5px $turqouse; }
+.blue { background-color: $blue; box-shadow: 0 5px 10px -5px $blue; }
+.purple { background-color: $purple; box-shadow: 0 5px 10px -5px $purple; }
+.midnight { background-color: $midnight; box-shadow: 0 5px 10px -5px $midnight; }
+.yellow { background-color: $yellow; box-shadow: 0 5px 10px -5px $yellow; }
+.red { background-color: $red; box-shadow: 0 5px 10px -5px $red; }
 
-/*
-|------------------------------
-|
-| Active Steps Colors
-|
-|------------------------------
-*/
-.bar--top.active.orange {
-  background-color: #f39c12 !important;
-  box-shadow: 0 5px 10px -5px #f39c12 !important;
-  .bar--top-step {
-    .line {
-      background-color: #f39c12 !important;
-      box-shadow: 0 5px 10px -5px #f39c12 !important;
-    }
-  }
-}
-
-.bar--top.active.green {
-  background-color: #2ecc71 !important;
-  box-shadow: 0 5px 10px -5px #2ecc71 !important;
-  .bar--top-step {
-    .line {
-      background-color: #2ecc71 !important;
-      box-shadow: 0 5px 10px -5px #2ecc71 !important;
-    }
-  }
-}
-
-.bar--top.active.turqouse {
-  background-color: #1abc9c !important;
-  box-shadow: 0 5px 10px -5px #1abc9c !important;
-  .bar--top-step {
-    .line {
-      background-color: #1abc9c !important;
-      box-shadow: 0 5px 10px -5px #1abc9c !important;
-    }
-  }
-}
-
-.bar--top.active.blue {
-  background-color: #3498db !important;
-  box-shadow: 0 5px 10px -5px #3498db !important;
-  .bar--top-step {
-    .line {
-      background-color: #3498db !important;
-      box-shadow: 0 5px 10px -5px #3498db !important;
-    }
-  }
-}
-
-.bar--top.active.purple {
-  background-color: #9b59b6 !important;
-  box-shadow: 0 5px 10px -5px #9b59b6 !important;
-  .bar--top-step {
-    .line {
-      background-color: #9b59b6 !important;
-      box-shadow: 0 5px 10px -5px #9b59b6 !important;
-    }
-  }
-}
-
-.bar--top.active.midnight {
-  background-color: #34495e !important;
-  box-shadow: 0 5px 10px -5px #34495e !important;
-  .bar--top-step {
-    .line {
-      background-color: #34495e !important;
-      box-shadow: 0 5px 10px -5px #34495e !important;
-    }
-  }
-}
-
-.bar--top.active.yellow {
-  background-color: #f1c40f !important;
-  box-shadow: 0 5px 10px -5px #f1c40f !important;
-  .bar--top-step {
-    .line {
-      background-color: #f1c40f !important;
-      box-shadow: 0 5px 10px -5px #f1c40f !important;
-    }
-  }
-}
-
-.bar--top.active.red {
-  background-color: #e74c3c !important;
-  box-shadow: 0 5px 10px -5px #e74c3c !important;
-  .bar--top-step {
-    .line {
-      background-color: #e74c3c !important;
-      box-shadow: 0 5px 10px -5px #e74c3c !important;
-    }
-  }
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(33,131,221, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(33,131,221, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(33,131,221, 0); }
 }

@@ -1,30 +1,19 @@
 <template>
-  <div>
-    <div class="vsteps--wrapper">
-      <!-- 
-      |----------------------------------------
-      | Steps Area
-      |----------------------------------------
-      -->
-      <div class="vsteps--bar-wrapper" v-if="!titleUp">
-        <div
-          class="vsteps--bar" :style="{ width: (100 / steps.length) + '%' }"
-          v-for="(item, key) in steps" :key="key"
-          @click="stepsChanged(key)"
-          >
-          <div class="bar--top" :class="[{ active: key < actives + 1, 'dot-style': dotStyle }, color]">
-            <div class="bar--top-step" v-if="hasCheckIcon">
-              <i class="fas fa-check" v-if="key < actives"></i>
-              <span v-else>{{ key + 1 }}</span>
-              <span class="line" />
-            </div>
-            <div class="bar--top-step" v-else-if="!hasCheckIcon && !dotStyle">
-              <span>{{ key + 1 }}</span>
-              <span class="line" />
-            </div>
-            <div class="bar--top-step" v-else-if="dotStyle">
-              <span class="line" />
-            </div>
+  <div class="vsteps--wrapper">
+    <!-- 
+    |----------------------------------------
+    | Steps Area
+    |----------------------------------------
+    -->
+    <div class="vsteps--bar-wrapper">
+      <div
+        class="vsteps--bar"
+        v-for="(item, key) in steps" :key="key"
+        @click="stepsChanged(key)"
+        >
+        <div class="vsteps--bar-progress">
+          <div class="bar--top">
+            <span class="circle">{{ key + 1 }}</span>
           </div>
           <div class="bar--title">
             <p style="margin-top: 1rem; font-weight: 500;">{{ item.title }}</p>
@@ -32,83 +21,56 @@
           </div>
         </div>
       </div>
-      <div class="vsteps--bar-wrapper" v-else>
-        <div
-          class="vsteps--bar"
-          v-for="(item, key) in steps" :key="key"
-          @click="stepsChanged(key)"
+    </div>
+    <!-- 
+    |----------------------------------------
+    | Content Area
+    |----------------------------------------
+    -->
+    <div class="vsteps--content-wrapper">
+      <div class="vsteps--content">
+        <slot />
+      </div>
+    </div>
+    <!-- 
+    |----------------------------------------
+    | Buttons Area
+    |----------------------------------------
+    -->
+    <div class="vsteps--buttons-wrapper" v-if="buttons">
+      <div class="vsteps--buttons">
+        <button
+          v-if="actives === 0"
+          disabled="true"
+          class="vsteps--buttons-btn"
+          style="color: #bdc3c7; box-shadow: 0 3px 10px -5px #bdc3c7; background-color: #ecf0f1; transition: .2s all ease;"
           >
-          <div class="bar--title">
-            <p style="margin-top: 1rem; font-weight: 500;">{{ item.title }}</p>
-            <p v-if="item.description" style="margin: .5rem 0; font-size: .85rem; opacity: .8;"> {{ item.description }}</p>
-          </div>
-          <div class="bar--top" :class="[{ active: key < actives + 1, 'dot-style': dotStyle }, color]">
-            <div class="bar--top-step" v-if="!item.icon">
-              <span v-if="dotStyle"></span>
-              <span v-else-if="key > actives - 1 && hasCheckIcon">{{ key + 1 }}</span>
-              <i v-else-if="key <= actives - 1 && hasCheckIcon" class="fas fa-check"></i>
-              <span v-else-if="key > actives - 1 && !hasCheckIcon">{{ key + 1 }}</span>
-              <span v-else-if="key <= actives - 1 && !hasCheckIcon">{{ key + 1 }}</span>
-            </div>
-            <div class="bar--top-step" v-else>
-              <span v-if="dotStyle"></span>
-              <i v-else-if="key <= actives - 1 && hasCheckIcon" class="fas fa-check"></i>
-              <i v-else :class="item.icon" />
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <!-- 
-      |----------------------------------------
-      | Content Area
-      |----------------------------------------
-      -->
-      <div class="vsteps--content-wrapper">
-        <div class="vsteps--content">
-          <slot />
-        </div>
-      </div>
-      <!-- 
-      |----------------------------------------
-      | Buttons Area
-      |----------------------------------------
-      -->
-      <div class="vsteps--buttons-wrapper" v-if="buttons">
-        <div class="vsteps--buttons">
-          <button
-            v-if="actives === 0"
-            disabled="true"
-            class="vsteps--buttons-btn"
-            style="color: #bdc3c7; box-shadow: 0 3px 10px -5px #bdc3c7; background-color: #ecf0f1; transition: .2s all ease;"
-            >
-            Back
-          </button>
-          <button
-            v-if="actives !== 0"
-            class="vsteps--buttons-btn"
-            :class="color"
-            @click="stepChangeByButton(-1)"
-            >
-            Back
-          </button>
-          <button
-            v-if="actives !== steps.length - 1"
-            class="vsteps--buttons-btn"
-            :class="color"
-            @click="stepChangeByButton(1)"
-            >
-            Next
-          </button>
-          <button
-            v-if="actives === steps.length - 1"
-            class="vsteps--buttons-btn"
-            :class="color"
-            @click="stepsFinished"
-            >
-            Finish
-          </button>
-        </div>
+          Back
+        </button>
+        <button
+          v-if="actives !== 0"
+          class="vsteps--buttons-btn"
+          :class="color"
+          @click="stepChangeByButton(-1)"
+          >
+          Back
+        </button>
+        <button
+          v-if="actives !== steps.length - 1"
+          class="vsteps--buttons-btn"
+          :class="color"
+          @click="stepChangeByButton(1)"
+          >
+          Next
+        </button>
+        <button
+          v-if="actives === steps.length - 1"
+          class="vsteps--buttons-btn"
+          :class="color"
+          @click="stepsFinished"
+          >
+          Finish
+        </button>
       </div>
     </div>
   </div>
@@ -130,6 +92,11 @@ export default {
     dotStyle: { required: false, type: Boolean, default: false },
     titleUp: { required: false, type: Boolean, default: false},
     animation: { required: false, type: String, default: "fade" }
+  },
+  computed: {
+    lineWidth() {
+      return { width: 10 + 'rem'}
+    }
   },
   methods: {
     stepChangeByButton(payload) {
@@ -171,6 +138,8 @@ export default {
     |----------------------------------------
     */
     this.steps[0].isActive = true
+  },
+  created() {
   }
 }
 </script>
