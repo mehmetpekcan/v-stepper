@@ -106,19 +106,11 @@ $gray: #f1f2f6;
       &.completed {
         .bar--top {
           .circle {
-            background-color: $red;
             color: $white;
           }
 
           &::after {
-            background: $red;
             animation: nextStep .8s;
-            animation-fill-mode: forwards;
-          }
-
-          &::before {
-            background: $red;
-            animation: backS .8s;
             animation-fill-mode: forwards;
           }
         }
@@ -127,7 +119,6 @@ $gray: #f1f2f6;
       &.active {
         .bar--top {
           .circle {
-            background-color: $red;
             transition: all .3s ease-in-out;
             animation: pulse 2s infinite;
             animation-delay: .8s;
@@ -203,21 +194,201 @@ $gray: #f1f2f6;
   }
 }
 
-/*
-|------------------------------
-|
-| Preset Colors
-|
-|------------------------------
-*/
-.orange { background-color: $orange; box-shadow: 0 5px 10px -5px $orange; }
-.green { background-color: $green; box-shadow: 0 5px 10px -5px $green; }
-.turqouse { background-color: $turqouse; box-shadow: 0 5px 10px -5px $turqouse; }
-.blue { background-color: $blue; box-shadow: 0 5px 10px -5px $blue; }
-.purple { background-color: $purple; box-shadow: 0 5px 10px -5px $purple; }
-.midnight { background-color: $midnight; box-shadow: 0 5px 10px -5px $midnight; }
-.yellow { background-color: $yellow; box-shadow: 0 5px 10px -5px $yellow; }
-.red { background-color: $red; box-shadow: 0 5px 10px -5px $red; }
+.green {
+  & button.vsteps--buttons-color {
+    box-shadow: 0 5px 10px -5px $green;
+    background-color: $green !important;
+  }
+
+  &.active {
+    .bar--top {
+      .circle {
+        background-color: $green !important;
+      }
+    }
+  }
+  &.completed {
+    .bar--top {
+      .circle {
+        background-color: $green !important;
+        box-shadow: 0 5px 10px -5px $green;
+        animation: pulse-green 2s infinite;
+      }
+  
+      &::after {
+        background-color: $green !important;
+      }
+    }
+  }
+}
+
+.turqouse {
+  & button.vsteps--buttons-color {
+    box-shadow: 0 5px 10px -5px $turqouse;
+    background-color: $turqouse !important;
+  }
+
+  &.active {
+    .bar--top {
+      .circle {
+        background-color: $turqouse !important;
+      }
+    }
+  }
+  &.completed {
+    .bar--top {
+      .circle {
+        background-color: $turqouse !important;
+        box-shadow: 0 5px 10px -5px $turqouse;
+        animation: pulse-turqouse 2s infinite;
+      }
+  
+      &::after {
+        background-color: $turqouse !important;
+      }
+    }
+  }
+}
+
+.orange {
+  & button.vsteps--buttons-color {
+    box-shadow: 0 5px 10px -5px $orange;
+    background-color: $orange !important;
+  }
+
+  &.active {
+    .bar--top {
+      .circle {
+        background-color: $orange !important;
+      }
+    }
+  }
+  &.completed {
+    .bar--top {
+      .circle {
+        background-color: $orange !important;
+        box-shadow: 0 5px 10px -5px $orange;
+        animation: pulse-orange 2s infinite;
+      }
+  
+      &::after {
+        background-color: $orange !important;
+      }
+    }
+  }
+}
+
+.midnight {
+  & button.vsteps--buttons-color {
+    box-shadow: 0 5px 10px -5px $midnight;
+    background-color: $midnight !important;
+  }
+
+  &.active {
+    .bar--top {
+      .circle {
+        background-color: $midnight !important;
+      }
+    }
+  }
+  &.completed {
+    .bar--top {
+      .circle {
+        background-color: $midnight !important;
+        box-shadow: 0 5px 10px -5px $midnight;
+        animation: pulse-midnight 2s infinite;
+      }
+  
+      &::after {
+        background-color: $midnight !important;
+      }
+    }
+  }
+}
+
+.yellow {
+  & button.vsteps--buttons-color {
+    box-shadow: 0 5px 10px -5px $yellow;
+    background-color: $yellow !important;
+  }
+
+  &.active {
+    .bar--top {
+      .circle {
+        background-color: $yellow !important;
+      }
+    }
+  }
+  &.completed {
+    .bar--top {
+      .circle {
+        background-color: $yellow !important;
+        box-shadow: 0 5px 10px -5px $yellow;
+        animation: pulse-yellow 2s infinite;
+      }
+  
+      &::after {
+        background-color: $yellow !important;
+      }
+    }
+  }
+}
+
+.red {
+  & button.vsteps--buttons-color {
+    box-shadow: 0 5px 10px -5px $red;
+    background-color: $red !important;
+  }
+
+  &.active {
+    .bar--top {
+      .circle {
+        background-color: $red !important;
+      }
+    }
+  }
+  &.completed {
+    .bar--top {
+      .circle {
+        background-color: $red !important;
+        box-shadow: 0 5px 10px -5px $red;
+        animation: pulse-red 2s infinite;
+      }
+  
+      &::after {
+        background-color: $red !important;
+      }
+    }
+  }
+}
+
+.blue {
+  & button.vsteps--buttons-color {
+    box-shadow: 0 5px 10px -5px $blue;
+    background-color: $blue !important;
+  }
+
+  &.active {
+    .bar--top {
+      .circle {
+        background-color: $blue !important;
+      }
+    }
+  }
+  &.completed {
+    .bar--top {
+      .circle {
+        background-color: $blue !important;
+        box-shadow: 0 5px 10px -5px $blue;
+        animation: pulse-blue 2s infinite;
+      }
+  
+      &::after {
+        background-color: $blue !important;
+      }
+    }
+  }
+}
 
 /*
 |------------------------------
@@ -226,8 +397,38 @@ $gray: #f1f2f6;
 |
 |------------------------------
 */
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba($red, .5); }
+@keyframes pulse-green {
+  0% { box-shadow: 0 0 0 0 rgba($green, .5); }
+  70% { box-shadow: 0 0 0 10px rgba(33,131,221, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(33,131,221, 0); }
+}
+@keyframes pulse-orange {
+  0% { box-shadow: 0 0 0 0 rgba($orange, .5); }
+  70% { box-shadow: 0 0 0 10px rgba(33,131,221, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(33,131,221, 0); }
+}
+@keyframes pulse-turqouse {
+  0% { box-shadow: 0 0 0 0 rgba($turqouse, .5); }
+  70% { box-shadow: 0 0 0 10px rgba(33,131,221, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(33,131,221, 0); }
+}
+@keyframes pulse-blue {
+  0% { box-shadow: 0 0 0 0 rgba($blue, .5); }
+  70% { box-shadow: 0 0 0 10px rgba(33,131,221, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(33,131,221, 0); }
+}
+@keyframes pulse-purple {
+  0% { box-shadow: 0 0 0 0 rgba($purple, .5); }
+  70% { box-shadow: 0 0 0 10px rgba(33,131,221, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(33,131,221, 0); }
+}
+@keyframes pulse-midnight {
+  0% { box-shadow: 0 0 0 0 rgba($midnight, .5); }
+  70% { box-shadow: 0 0 0 10px rgba(33,131,221, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(33,131,221, 0); }
+}
+@keyframes pulse-yellow {
+  0% { box-shadow: 0 0 0 0 rgba($yellow, .5); }
   70% { box-shadow: 0 0 0 10px rgba(33,131,221, 0); }
   100% { box-shadow: 0 0 0 0 rgba(33,131,221, 0); }
 }

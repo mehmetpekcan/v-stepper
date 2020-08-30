@@ -13,7 +13,7 @@
         >
         <div
           class="vsteps--bar-progress"
-          :class="{ completed: key < actives, active: key === actives }"
+          :class="[{ completed: key < actives, active: key === actives }, color]"
           >
           <div class="bar--top dot-style" v-if="dotStyle">
             <span class="circle" :class="['color']"></span>
@@ -48,7 +48,7 @@
     |----------------------------------------
     -->
     <div class="vsteps--buttons-wrapper" v-if="buttons">
-      <div class="vsteps--buttons">
+      <div class="vsteps--buttons" :class="color">
         <button
           v-if="actives === 0"
           disabled="true"
@@ -59,24 +59,21 @@
         </button>
         <button
           v-if="actives !== 0"
-          class="vsteps--buttons-btn"
-          :class="color"
+          class="vsteps--buttons-btn vsteps--buttons-color"
           @click="stepChangeByButton(-1)"
           >
           Back
         </button>
         <button
           v-if="actives !== steps.length - 1"
-          class="vsteps--buttons-btn"
-          :class="color"
+          class="vsteps--buttons-btn vsteps--buttons-color"
           @click="stepChangeByButton(1)"
           >
           Next
         </button>
         <button
           v-if="actives === steps.length - 1"
-          class="vsteps--buttons-btn"
-          :class="color"
+          class="vsteps--buttons-btn vsteps--buttons-color"
           @click="stepsFinished"
           >
           Finish
