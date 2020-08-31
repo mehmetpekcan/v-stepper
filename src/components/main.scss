@@ -26,16 +26,16 @@ $gray: #f1f2f6;
 |
 |------------------------------
 */
-.vsteps--bar-wrapper {
+.vstepper--bar-wrapper {
   position: relative;
   display: flex;
   width: 100%;
 
-  .vsteps--bar {
+  .vstepper--bar {
     width: 100%;
     cursor: pointer;
 
-    .vsteps--bar-progress {
+    .vstepper--bar-progress {
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -144,11 +144,11 @@ $gray: #f1f2f6;
       }
     }
 
-    &:last-of-type .vsteps--bar-progress .bar--top::after {
+    &:last-of-type .vstepper--bar-progress .bar--top::after {
       display: none;
     }
     
-    &:first-of-type .vsteps--bar-progress .bar--top::before {
+    &:first-of-type .vstepper--bar-progress .bar--top::before {
       display: none;
     }
   }
@@ -161,7 +161,7 @@ $gray: #f1f2f6;
 |
 |------------------------------
 */
-.vsteps--content-wrapper {
+.vstepper--content-wrapper {
   margin: 2rem 0;
   padding: 0 2rem;
   width: 100%;
@@ -174,11 +174,11 @@ $gray: #f1f2f6;
 |
 |------------------------------
 */
-.vsteps--buttons-wrapper {
+.vstepper--buttons-wrapper {
   display: flex;
   justify-content: center;
 
-  .vsteps--buttons {
+  .vstepper--buttons {
     display: flex;
 
     button {
@@ -195,7 +195,7 @@ $gray: #f1f2f6;
 }
 
 .green {
-  & button.vsteps--buttons-color {
+  & button.vstepper--buttons-color {
     box-shadow: 0 5px 10px -5px $green;
     background-color: $green !important;
   }
@@ -223,7 +223,7 @@ $gray: #f1f2f6;
 }
 
 .turqouse {
-  & button.vsteps--buttons-color {
+  & button.vstepper--buttons-color {
     box-shadow: 0 5px 10px -5px $turqouse;
     background-color: $turqouse !important;
   }
@@ -251,7 +251,7 @@ $gray: #f1f2f6;
 }
 
 .orange {
-  & button.vsteps--buttons-color {
+  & button.vstepper--buttons-color {
     box-shadow: 0 5px 10px -5px $orange;
     background-color: $orange !important;
   }
@@ -279,7 +279,7 @@ $gray: #f1f2f6;
 }
 
 .midnight {
-  & button.vsteps--buttons-color {
+  & button.vstepper--buttons-color {
     box-shadow: 0 5px 10px -5px $midnight;
     background-color: $midnight !important;
   }
@@ -307,7 +307,7 @@ $gray: #f1f2f6;
 }
 
 .yellow {
-  & button.vsteps--buttons-color {
+  & button.vstepper--buttons-color {
     box-shadow: 0 5px 10px -5px $yellow;
     background-color: $yellow !important;
   }
@@ -335,7 +335,7 @@ $gray: #f1f2f6;
 }
 
 .red {
-  & button.vsteps--buttons-color {
+  & button.vstepper--buttons-color {
     box-shadow: 0 5px 10px -5px $red;
     background-color: $red !important;
   }
@@ -363,7 +363,7 @@ $gray: #f1f2f6;
 }
 
 .blue {
-  & button.vsteps--buttons-color {
+  & button.vstepper--buttons-color {
     box-shadow: 0 5px 10px -5px $blue;
     background-color: $blue !important;
   }

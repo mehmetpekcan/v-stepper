@@ -1,18 +1,18 @@
 <template>
-  <div class="vsteps--wrapper">
+  <div class="vstepper--wrapper">
     <!-- 
     |----------------------------------------
     | Steps Area
     |----------------------------------------
     -->
-    <div class="vsteps--bar-wrapper">
+    <div class="vstepper--bar-wrapper">
       <div
-        class="vsteps--bar"
+        class="vstepper--bar"
         v-for="(item, key) in steps" :key="key"
         @click="stepsChanged(key)"
         >
         <div
-          class="vsteps--bar-progress"
+          class="vstepper--bar-progress"
           :class="[{ completed: key < actives, active: key === actives }, color]"
           >
           <div class="bar--top dot-style" v-if="dotStyle">
@@ -37,8 +37,8 @@
     | Content Area
     |----------------------------------------
     -->
-    <div class="vsteps--content-wrapper">
-      <div class="vsteps--content">
+    <div class="vstepper--content-wrapper">
+      <div class="vstepper--content">
         <slot />
       </div>
     </div>
@@ -47,33 +47,33 @@
     | Buttons Area
     |----------------------------------------
     -->
-    <div class="vsteps--buttons-wrapper" v-if="buttons">
-      <div class="vsteps--buttons" :class="color">
+    <div class="vstepper--buttons-wrapper" v-if="buttons">
+      <div class="vstepper--buttons" :class="color">
         <button
           v-if="actives === 0"
           disabled="true"
-          class="vsteps--buttons-btn"
+          class="vstepper--buttons-btn"
           style="color: #bdc3c7; box-shadow: 0 3px 10px -5px #bdc3c7; background-color: #ecf0f1; transition: .2s all ease;"
           >
           Back
         </button>
         <button
           v-if="actives !== 0"
-          class="vsteps--buttons-btn vsteps--buttons-color"
+          class="vstepper--buttons-btn vstepper--buttons-color"
           @click="stepChangeByButton(-1)"
           >
           Back
         </button>
         <button
           v-if="actives !== steps.length - 1"
-          class="vsteps--buttons-btn vsteps--buttons-color"
+          class="vstepper--buttons-btn vstepper--buttons-color"
           @click="stepChangeByButton(1)"
           >
           Next
         </button>
         <button
           v-if="actives === steps.length - 1"
-          class="vsteps--buttons-btn vsteps--buttons-color"
+          class="vstepper--buttons-btn vstepper--buttons-color"
           @click="stepsFinished"
           >
           Finish
@@ -85,7 +85,7 @@
 
 <script>
 export default {
-  name: "VSteps",
+  name: "vstepper",
   data() {
     return {
       actives: 0,
